@@ -6,9 +6,17 @@
 # git clone https://github.com/cisagov/vulnrichment.git
 #
 # Then, just run nvd-count.sh from the ./nvd-count/ path, and you're all
-# set.
-# With echo: 114.41
-# Without:   
+# set. If you time it, you'll get around these results:
+#
+# Processing complete. CSV files created:
+#   - ./nvd-awaiting.csv (Line Count: 13002)
+#   - ./nvd-analyzed.csv (Line Count: 129439)
+#   - ./nvd-modified.csv (Line Count: 95424)
+#   - ./nvd-rejected.csv (Line Count: 14209)
+#   - ./nvd-other.csv (Line Count: 38)
+# real 2497.55
+# user 1259.97
+# sys 976.48
 
 nvd_dir=../../nvd-json-data-feeds
 awaiting_csv=./nvd-awaiting.csv
@@ -26,8 +34,8 @@ echo "CVE,Published,Modified,Status" > $other_csv
 echo "[*] Finding all CVE JSON files in $nvd_dir"
 find $nvd_dir -type f -name 'CVE-*.json' | while read -r json_file; do
 
-  echo "[*] Checking $id"
   id=$(jq -r '.id' "$json_file")
+  echo "[*] Checking $id"
   published=$(jq -r '.published' "$json_file")
   lastModified=$(jq -r '.lastModified' "$json_file")
   vulnStatus=$(jq -r '.vulnStatus' "$json_file")
