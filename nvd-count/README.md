@@ -23,11 +23,16 @@ git -C ../../nvd-json-data-feeds fetch &&
 git -C ../../nvd-json-data-feeds pull -r &&
 ./nvd-count.sh &&
 ./adp-count.sh &&
-./count-complete-and-todo-cves.sh
+./count-complete-and-todo-cves.sh | tee stats.md
 ```
 
 This will read all the CVE data from both the NVD JSON data feed, the Vulnrichment repo, and then figure out which are done and how many there's left to do.
 
-The whole run takes maybe an hour or so to complete, the vast majority of the time taken by crawling the entire NVD CVE corpus (`nvd-count.sh`).
+The whole run takes maybe an hour or so to complete, the vast majority of the time taken by crawling the entire NVD CVE corpus (`nvd-count.sh`). In the end, you'll have a bunch of raw data to mess around with, as well as a `stats.md` summary file that looks like this:
+
+```
+Vulnrichment has covered 6131 CVEs, with 6910 left to do.
+Vulnrichment has covered 47% of the 13041 still to be analyzed by NVD.
+```
 
 While this is all written in some pretty amateur shell scripting, it has the upside of being fairly easy to follow if you want to make something better.
