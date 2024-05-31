@@ -1,2 +1,2 @@
-Date,NVD-Analyzed,NVD-Awaiting,NVD-Modified,NVD-Rejected,NVD-Other,ADP-Processed
-2024-05-31T11:46:57.000,13209,129438,95425,14214,10,6868
+Date,NVD-Analyzed,NVD-Awaiting,NVD-Modified,NVD-Rejected,NVD-Other,ADP-Done,ADP-Extra,ADP-Todo
+2024-05-31T11:54:47.000,13209,129438,95425,14214,10,6184,683,7024,
