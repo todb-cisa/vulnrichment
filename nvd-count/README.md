@@ -17,8 +17,8 @@ Once you've got all that, and assuming you have a sensible shell like [ZSH](http
 
 On a typical run, you'll want to first make sure everything's up to date in both teh NVD JSON
 feed repo and the Vulnrichment repo, then start counting things. This is all contained in
-`daily-check.sh`, which should run about once a day. That will write to [./stats.md]
-and [./daily-stats.csv]
+`daily-check.sh`, which should run about once a day. That will write to [stats.md](stats.md)
+and [daily-stats.csv](daily-stats.csv)
 
 The whole run takes maybe an hour or so to complete, since we recount every CVE that the NVD
 JSON data knows about.
