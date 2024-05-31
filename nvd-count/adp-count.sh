@@ -13,6 +13,6 @@ find $adp_dir -type f -name 'CVE-*.json' | while read -r json_file; do
   echo $id >> $processed_csv
 done
 
-processed_lines=$(wc -l < $analyzed_csv | tr -d ' ')
+processed_lines=$(wc -l < $processed_csv | tr -d ' ')
 echo "Processing complete. CSV files created:
-  - $analyzed_csv (Line Count: $analyzed_lines)"
+  - $processed_csv (Line Count: $processed_lines)"
