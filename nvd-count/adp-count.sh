@@ -10,7 +10,7 @@ echo "[*] Finding all CVE JSON files in $adp_dir"
 find $adp_dir -type f -name 'CVE-*.json' | while read -r json_file; do
   id=$(jq -r '.cveMetadata.cveId' "$json_file")
   echo "[*] Recording $id"
-  echo $id >> $analyzed_csv
+  echo $id >> $processed_csv
 done
 
 processed_lines=$(wc -l < $analyzed_csv | tr -d ' ')
