@@ -1,2 +1,10 @@
-Vulnrichment has covered 6184 CVEs, with 7024 left to do.
+Fri May 31 11:41:09 CDT 2024
+
+NVD has 13208 CVEs marked as Awaiting Analysis.
+
+Vulnrichment has covered 6184 CVEs that have not been analyzed by NVD.
+
+Vulnrichment has covered 683 CVEs that have been analyzed by NVD.
+
 Vulnrichment has covered 46% of the 13208 still to be analyzed by NVD.
+

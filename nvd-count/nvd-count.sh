@@ -19,11 +19,11 @@
 # sys 976.48
 
 nvd_dir=../../nvd-json-data-feeds
-awaiting_csv=./nvd-awaiting.csv
 analyzed_csv=./nvd-analyzed.csv
+awaiting_csv=./nvd-awaiting.csv
 modified_csv=./nvd-modified.csv
 rejected_csv=./nvd-rejected.csv
-other_csv=./nvd-other.csv
+   other_csv=./nvd-other.csv
 
 echo "CVE,Published,Modified,Status" > $awaiting_csv
 echo "CVE,Published,Modified,Status" > $analyzed_csv
