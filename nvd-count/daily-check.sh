@@ -7,8 +7,7 @@
 git -C ../../nvd-json-data-feeds fetch --all && git -C ../../nvd-json-data-feeds pull -r
 git fetch --all
 git update-ref refs/head/develop upstream/develop
-git push origin develop
-git merge develop -m "Merge develop to nvd-counter"
+git merge upstream/develop -m "Merge develop to nvd-counter"
 
 # Record the date in the same format that NVD does
 start_date=$(date +"%Y-%m-%dT%H:%M:%S")
