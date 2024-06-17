@@ -25,3 +25,23 @@ JSON data knows about.
 
 While this is all written in some pretty amateur shell scripting, it has the upside of being
 fairly easy to follow if you want to make something better.
+
+## Interpreting results
+
+When reading [daily-stats.csv](daily-stats.csv), you will notice several columns. Those are:
+
+* Date: The date that row was completed. Usually, but not always, based on Central US time.
+
+For the NVD lists of CVEs:
+
+* NVD-Awaiting: The total number of CVEs marked as "Awaiting Analysis" by the NVD. These are CVEs that, as you might expect, have not undergone analysis by the NVD yet.
+* NVD-Analyzed: The total number of CVEs marked as "Analyzed" by the NVD. Those that have reached the end of analysis at NVD.
+* NVD-Modified: The total number of CVEs marked as "Modified" by the NVD. Those that were once analyzed by the NVD, but the CVE has since changed, possibly in a material way.
+* NVD-Rejected: The total number of CVEs marked as "Rejected" by the NVD. No futher information should be expected on those, as the CVEs are unpublished.
+* NVD-Other: The total number of CVEs marked as some other status, usually "In Progress." Not analyzed, but not-not analyzed?
+
+For the ADP lists of CVEs:
+
+* ADP-Done: The total number of CVEs that have a CISA ADP container that are also on the NVD-Awaiting list.
+* ADP-Extra: The total number of CVEs that have a CISA ADP container that are NOT on the NVD-Awaiting list. Ususally, these are on the NVD-Analyzed list, but might be NVD-Modified or NVD-Other.
+* ADP-TODO: The total number of CVEs that are missing a CSA ADP container, that are also on NVD-Awaiting list.
