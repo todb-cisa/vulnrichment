@@ -12,7 +12,7 @@ echo "[*] Initializing output files"
 echo "[*] Finding all CVE JSON files in $adp_dir"
 find $adp_dir -type f -name 'CVE-*.json' | while read -r json_file; do
   cve_id=$(jq -r '.cveMetadata.cveId' "$json_file")
-  cwe_ids=$(jq -r '[.containers.adp[].problemTypes[].descriptions[].cweId] | join(";")' "$json_file" 2>/dev/null)
+  cwe_ids=$(jq -r '[.containers.adp[].problemTypes[]?.descriptions[]?.cweId] | join(";")' "$json_file" 2>/dev/null)
   
   if [[ -n $cwe_ids ]]; then
     echo "[*] Recording CVE ID and CWE IDs: $cve_id, $cwe_ids"

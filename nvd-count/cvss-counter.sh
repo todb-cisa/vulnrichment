@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Usage: This script extracts the "baseScore" and CVE ID from JSON files and records them in cve-basescores.txt and cve-no-cvss.txt
+# Usage: This script extracts the "baseScore" and CVE ID from JSON files and records them in cve-cvss.txt and cve-no-cvss.txt
 
 adp_dir=..
 
@@ -12,8 +12,9 @@ echo "[*] Initializing output files"
 echo "[*] Finding all CVE JSON files in $adp_dir"
 find $adp_dir -type f -name 'CVE-*.json' | while read -r json_file; do
   cve_id=$(jq -r '.cveMetadata.cveId' "$json_file")
-  base_score=$(jq -r '.containers.adp[].metrics[].cvssV3_1.baseScore // empty' "$json_file" 2>/dev/null)
-  
+  base_score=$(jq -r '.containers.adp[].metrics[]?.cvssV3_1.baseScore // empty' "$json_file" 2>/dev/null)
+
+  # Check if base_score was found
   if [[ -n $base_score ]]; then
     echo "[*] Recording CVE ID and baseScore: $cve_id, $base_score"
     echo "$cve_id,$base_score" >> $cvss_file
