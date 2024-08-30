@@ -1,5 +1,6 @@
 #!/bin/zsh
-# Usage: This script extracts CWE IDs, CVSS baseScores, and CPE strings from JSON files, writing them to respective output files. Each field is handled in a single pass.
+# Usage: This script extracts CWE IDs, CVSS baseScores, and CPE strings from JSON files, writing
+# them to respective output files.
 
 adp_dir=..
 
@@ -12,13 +13,12 @@ no_cvss_file=./cve-no-cvss.txt
 cpe_file=./cve-cpe.txt
 no_cpe_file_cpe=./cve-no-cpe.txt
 
+# Initialize output files
 echo "[*] Initializing output files"
-: > $cwe_file
-: > $no_cwe_file 
-: > $cvss_file 
-: > $no_cvss_file 
-: > $cpe_file 
-: > $no_cpe_file_cpe 
+files=($cwe_file $no_cwe_file $cvss_file $no_cvss_file $cpe_file $no_cpe_file_cpe)
+for file in "${files[@]}"; do
+  : > $file
+done
 
 echo "[*] Finding all CVE JSON files in $adp_dir"
 find $adp_dir -type f -name 'CVE-*.json' | while read -r json_file; do
@@ -52,17 +52,9 @@ find $adp_dir -type f -name 'CVE-*.json' | while read -r json_file; do
   fi
 done
 
-cwe_lines=$(wc -l < $cwe_file | tr -d ' ')
-no_cwe_lines=$(wc -l < $no_cwe_file | tr -d ' ')
-cvss_lines=$(wc -l < $cvss_file | tr -d ' ')
-no_cvss_lines=$(wc -l < $no_cvss_file | tr -d ' ')
-cpe_lines=$(wc -l < $cpe_file | tr -d ' ')
-no_cpe_lines=$(wc -l < $no_cpe_file_cpe | tr -d ' ')
-
-echo "Processing complete. Files created:
-  - $cwe_file (Line Count: $cwe_lines)
-  - $no_cwe_file (Line Count: $no_cwe_lines)
-  - $cvss_file (Line Count: $cvss_lines)
-  - $no_cvss_file (Line Count: $no_cvss_lines)
-  - $cpe_file (Line Count: $cpe_lines)
-  - $no_cpe_file_cpe (Line Count: $no_cpe_lines)"
+echo "Processing complete. Files created:"
+for file in "${files[@]}"; do
+  sort -o $file $file
+  line_count=$(wc -l < $file | tr -d ' ')
+  echo "  - $file (Line Count: $line_count)"
+done
