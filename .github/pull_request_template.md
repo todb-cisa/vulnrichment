@@ -1,4 +1,3 @@
-<!-- 
 # Please note!
 
 While we appreciate your efforts to make Vulnrichment better, please note the [README](https://github.com/cisagov/vulnrichment?tab=readme-ov-file#issues-and-pull-requests) guidance on PRs: If your PR is proposing changes to a CVE ADP record directly, it is unlikely to be merged in the usual way due to the way we build CISA-ADP container on the back end. We will definitely use your code as a guide, but you may not see an actual merge. We'll note this in this PR when your proposal makes it to production (or doesn't).
@@ -10,4 +9,5 @@ If your PR is anything other than an edit to a CVE record (such as documentation
 Finally, please make sure to describe what you intend to accomplish with your PR. That way we can assess it and make any suggestions to further your goals.
 
 Thanks for your interest in Vulnrichment!
--->
+
+----
